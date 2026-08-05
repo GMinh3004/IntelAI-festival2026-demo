@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(30, 30, 46);
+    color: white;
+    border: 2px solid rgb(199, 199, 199);
+    border-radius: 10px;
+    margin: 8px 5px;
+    padding: 10px 12px;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    border: 1px solid gainsboro;
+    border-radius: 7px;
+    width: 100%;
+    height: 33px;
+}
+#label4cmd {
+    font-size: 20px;
+}
+.abutton {
+    display: inline-block;
+    border: none;
+    color: black;
+    border-radius: 14px;
+    background-color: rgb(102, 179, 255);
+    height: 38px;
+    width: 49%;
+    margin-top: 15px;
+    margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.abutton:hover {
+    cursor: pointer;
+    transition: all 170ms ease-in;
+    transform: scale(0.97);
+}
+#cli {
+    display: block;
+    margin-top: 50px;
+    border: 1px solid rgb(0, 13, 26);
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    height: auto;
+    width: 98vw;
+}
