@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
         <title>KBHelper</title>
     </head>
     <body>
@@ -13,11 +14,16 @@
                 placeholder="Internet not connect" rows="2"
                 cols="10"></textarea>
             <button id="requestb" class="abutton">Ask KBHelper</button>
-            <button id="scanos" class="abutton">Scan all computer</button>
+            <button id="scanos" class="abutton">Auto find bugs</button>
             <br>
         </div>
-        <label for="foutput" class="nlabel">OUTPUT</label>
+        <div id="fcli">
+            <label for="foutput" class="nlabel">OUTPUT</label>
+            <div>
+                <button class="bcli">Copy All</button>
+                <button class="bcli">Clear</button>
+            </div>
+        </div>
         <textarea id="foutput" readonly rows="5"></textarea>
-        <script></script>
     </body>
 </html>

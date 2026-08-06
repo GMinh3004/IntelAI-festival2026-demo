@@ -34,7 +34,8 @@ input {
     max-height: 152px;
 }
 
-#nlabel {
+.nlabel {
+    display: inline-block;
     font-size: 20px;
     margin-bottom: 6px;
 }
@@ -63,10 +64,36 @@ input {
     transform: rotate(1deg);
 }
 
+#fcli {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bcli {
+    display: inline-block;
+    background-color: rgb(23, 0, 77);
+    color: white;
+    border: 2px solid rgb(255, 255, 204);
+    border-radius: 8px;
+    width: 100px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    font-size: 15px;
+}
+.bcli:hover {
+    cursor: pointer;
+    transition: all 170ms ease-in;
+    transform: scale(0.95);
+}
+.bcli:active {
+    transition: all 150ms ease;
+    transform: rotate(1deg);
+}
+
 #foutput {
     font-size: 12px;
     display: block;
-    border: 1px solid rgb(0, 13, 26);
+    border: 1px solid rgb(0, 51, 26);
     border-radius: 5px;
     background-color: black;
     color: rgb(230, 255, 230);
@@ -77,10 +104,11 @@ input {
     border-radius: 5px;
     width: 100%;
     resize: vertical;
-    min-height: 25px;
+    min-height: 40px;
+    max-height: 38vw;
 }
 #foutput:hover {
-    transition: all ease 0.2s;
+    transition: all ease 150ms;
     border-radius: 10px;
     border-color: rgb(179, 255, 255);
 }
