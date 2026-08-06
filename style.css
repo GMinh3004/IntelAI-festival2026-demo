@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     background-color: rgb(30, 30, 46);
     color: white;
@@ -8,45 +9,78 @@ body {
     border-radius: 10px;
     margin: 8px 5px;
     padding: 10px 12px;
+    font-family: sans-serif; /* Thêm font chữ cho đẹp mắt hơn */
 }
 
 label {
     display: block;
+}
+
+input {
+    display: block;
+}
+
+#command {
+    resize: vertical;
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: inherit;
+    border-radius: 10px;
+    display: block;
     font-size: 18px;
-    border: 1px solid gainsboro;
-    border-radius: 7px;
     width: 100%;
-    height: 33px;
+    min-height: 32px;
+    max-height: 152px;
 }
-#label4cmd {
+
+#nlabel {
     font-size: 20px;
+    margin-bottom: 6px;
 }
+
 .abutton {
     display: inline-block;
     border: none;
     color: black;
     border-radius: 14px;
     background-color: rgb(102, 179, 255);
-    height: 38px;
+    height: 40px;
     width: 49%;
     margin-top: 15px;
     margin-bottom: 18px;
     font-size: 18px;
     font-weight: bold;
 }
+
 .abutton:hover {
     cursor: pointer;
     transition: all 170ms ease-in;
-    transform: scale(0.97);
+    transform: scale(0.98);
 }
-#cli {
+.abutton:active {
+    transition: all 150ms ease;
+    transform: rotate(1deg);
+}
+
+#foutput {
+    font-size: 12px;
     display: block;
-    margin-top: 50px;
     border: 1px solid rgb(0, 13, 26);
     border-radius: 5px;
     background-color: black;
-    color: white;
-    margin: 0 auto;
-    height: auto;
-    width: 98vw;
+    color: rgb(230, 255, 230);
+    padding: 5px 3px 7px 3px;
+    font-family: monospace;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    resize: vertical;
+    min-height: 25px;
+}
+#foutput:hover {
+    transition: all ease 0.2s;
+    border-radius: 10px;
+    border-color: rgb(179, 255, 255);
 }

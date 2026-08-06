@@ -8,15 +8,16 @@
     </head>
     <body>
         <div id="main1">
-            <label for="command" id="label4cmd">Enter command</label>
-            <input id="command" type="text"
-                placeholder="Check netwok connection" />
+            <label for="command" class="nlabel">Enter command</label>
+            <textarea id="command"
+                placeholder="Internet not connect" rows="2"
+                cols="10"></textarea>
             <button id="requestb" class="abutton">Ask KBHelper</button>
             <button id="scanos" class="abutton">Scan all computer</button>
             <br>
         </div>
-        <div id="cli">
-            <p>Started KBHelper</p>
-        </div>
+        <label for="foutput" class="nlabel">OUTPUT</label>
+        <textarea id="foutput" readonly rows="5"></textarea>
+        <script></script>
     </body>
 </html>
