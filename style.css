@@ -69,6 +69,11 @@ input {
     justify-content: space-between;
 }
 
+#bclif {
+    background-color: rgb(23, 0, 77);
+    color: white;
+    border: 2px solid rgb(255, 255, 204);
+}
 .bcli {
     display: inline-block;
     background-color: rgb(23, 0, 77);

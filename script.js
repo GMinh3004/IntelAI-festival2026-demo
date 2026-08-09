@@ -1,3 +1,5 @@
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 function getTime() {
     const now = new Date();
 
@@ -17,3 +19,22 @@ function jsOut(smessage) {
 
 let sram = "Started KBHelper";
 jsOut(sram);
+
+let cls = document.getElementById("clear");
+const cpa = document.getElementById("cpA");
+cls.addEventListener("click", function () {
+    foutput.value = "";
+});
+cpa.addEventListener("click", async function () {
+    if (foutput.value != "") {
+        await navigator.clipboard.writeText(foutput.value);
+        cpa.innerText = "Copied!";
+        cpa.style.border = "none";
+        cpa.style.backgroundColor = "rgb(0, 230, 0)";
+        cpa.style.color = "white";
+        await wait(3000);
+        cpa.innerText = "Copy All";
+    } else {
+        alert("No text :(");
+    }
+});
