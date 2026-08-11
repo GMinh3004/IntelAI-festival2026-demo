@@ -1,5 +1,6 @@
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 let ylog = true;
+let printing = false;
 
 function getTime() {
     const now = new Date();
@@ -32,7 +33,7 @@ cls.addEventListener("click", function () {
 cpa.addEventListener("click", async function () {
     if (ylog == true) {
         await navigator.clipboard.writeText(foutput.value);
-        cpa.innerText = "Copied!";
+        cpa.innerText = "Copied all!";
         cpa.classList.add("press");
 
         setTimeout(() => {
@@ -48,48 +49,83 @@ cpa.addEventListener("click", async function () {
 
 const reqBtn = document.getElementById("requestb");
 const scanBtn = document.getElementById("scanos");
-const cmdInput = document.getElementById("command");
+const cmdinp = document.getElementById("command");
 
 // Giả lập tính năng "Ask KBHelper"
 async function processCommand() {
-    const text = cmdInput.value.trim();
-    if (!text) return;
+    const text = cmdinp.value.trim();
+    if (!text) return; // Kiểm tra trước: Nếu ô trống thì dừng luôn, không làm gì cả
 
-    jsOut(`USER_CMD: ${text}`);
-    cmdInput.value = ""; // Xóa ô nhập
+    if (printing == false) {
+        printing = true;
 
-    jsOut("KBHelper: Analyzing request...");
-    await wait(800); // Chờ 0.8 giây cho giống thật
+        // Khóa nút bên kia
+        scanBtn.style.backgroundColor = "gray";
+        scanBtn.style.cursor = "not-allowed";
 
-    if (
-        text.toLowerCase().includes("net") ||
-        text.toLowerCase().includes("wifi")
-    ) {
-        jsOut("DIAGNOSIS: Network interface wlan0 is DOWN.");
-        await wait(600);
-        jsOut(
-            "FIX_SUGGEST: Run 'sudo ip link set wlan0 up' or restart NetworkManager.",
+        const gettxt = text.toLowerCase();
+
+        jsOut(`USER_CMD: ${text}`);
+        cmdinp.value = ""; // Xóa ô nhập
+
+        jsOut("KBHelper: Analyzing request...");
+        await wait(800);
+
+        const installMatch = gettxt.match(
+            /(?:install|download|tải|cài đặt|cài)\s+([a-z0-9\-_]+)/i,
         );
-    } else {
-        jsOut(
-            `DIAGNOSIS: Analyzed pattern '${text}'. System parameters nominal.`,
-        );
-        await wait(500);
-        jsOut("SUGGESTION: No critical errors found for this entry.");
+
+        if (installMatch && installMatch[1]) {
+            const packageName = installMatch[1];
+
+            jsOut(
+                `DIAGNOSIS: Intent detected -> Software Installation [Package: '${packageName}']`,
+            );
+            await wait(600);
+            jsOut(
+                `KFixit: Run 'sudo apt update && sudo apt install -y ${packageName}'`,
+            );
+        } else if (
+            text.toLowerCase().includes("net") ||
+            text.toLowerCase().includes("wifi")
+        ) {
+            jsOut("DIAGNOSIS: Network interface wlan0 is DOWN.");
+            await wait(600);
+            jsOut(
+                "KFixit: Run 'sudo ip link set wlan0 up' or restart NetworkManager.",
+            );
+        } else {
+            jsOut(
+                `DIAGNOSIS: Analyzed pattern '${text}'. System parameters nominal.`,
+            );
+            await wait(500);
+            jsOut("SUGGESTION: No critical errors found for this entry.");
+        }
+        printing = false;
+        scanBtn.style.cursor = "pointer";
+        scanBtn.style.backgroundColor = "rgb(102, 179, 255)";
     }
 }
 
 // Giả lập tính năng "Auto find bugs"
 async function autoScan() {
-    jsOut("SYSTEM_SCAN: Initializing deep inspection...");
-    await wait(700);
-    jsOut("CHECKING: /var/log/syslog ...");
-    await wait(1000);
-    jsOut("WARN: Failed to bind port 80 (Address already in use).");
-    await wait(800);
-    jsOut(
-        "RECOMMENDATION: Kill process occupying port 80 or check firewall settings.",
-    );
+    if (printing == false) {
+        printing = true;
+        reqBtn.style.backgroundColor = "gray";
+        reqBtn.style.cursor = "not-allowed";
+        jsOut("SYSTEM_SCAN: Initializing deep inspection...");
+        await wait(700);
+        jsOut("CHECKING: /var/log/syslog ...");
+        await wait(1000);
+        jsOut("WARN: Failed to bind port 80 (Address already in use).");
+        await wait(800);
+        jsOut(
+            "KFixit: Kill process occupying port 80 or check firewall settings.",
+        );
+        printing = false;
+        reqBtn.style.cursor = "pointer";
+        reqBtn.style.backgroundColor = "rgb(102, 179, 255)";
+    }
 }
 
 // Bắt sự kiện Click
@@ -97,8 +133,8 @@ if (reqBtn) reqBtn.addEventListener("click", processCommand);
 if (scanBtn) scanBtn.addEventListener("click", autoScan);
 
 // Bắt sự kiện nhấn Enter trong ô Command
-if (cmdInput) {
-    cmdInput.addEventListener("keydown", (e) => {
+if (cmdinp) {
+    cmdinp.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
             processCommand();
