@@ -19,7 +19,7 @@ function jsOut(smessage) {
     foutput.value += `${getTime()} ${smessage}\n`;
     foutput.scrollTop = foutput.scrollHeight;
 }
-
+let kchat = document.getElementById("kchat");
 let sram = "Started KBHelper";
 jsOut(sram);
 
@@ -45,13 +45,11 @@ cpa.addEventListener("click", async function () {
     }
 });
 
-// --- PHẦN BỔ SUNG: GIẢ LẬP XỬ LÝ LOG DÙNG ASYNC / AWAIT ---
-
+// ai
 const reqBtn = document.getElementById("requestb");
 const scanBtn = document.getElementById("scanos");
 const cmdinp = document.getElementById("command");
 
-// Giả lập tính năng "Ask KBHelper"
 async function processCommand() {
     const text = cmdinp.value.trim();
     if (!text) return; // Kiểm tra trước: Nếu ô trống thì dừng luôn, không làm gì cả
@@ -59,7 +57,6 @@ async function processCommand() {
     if (printing == false) {
         printing = true;
 
-        // Khóa nút bên kia
         scanBtn.style.backgroundColor = "gray";
         scanBtn.style.cursor = "not-allowed";
 
@@ -106,8 +103,7 @@ async function processCommand() {
         scanBtn.style.backgroundColor = "rgb(102, 179, 255)";
     }
 }
-
-// Giả lập tính năng "Auto find bugs"
+// Auto scan
 async function autoScan() {
     if (printing == false) {
         printing = true;
@@ -128,7 +124,7 @@ async function autoScan() {
     }
 }
 
-// Bắt sự kiện Click
+// Click
 if (reqBtn) reqBtn.addEventListener("click", processCommand);
 if (scanBtn) scanBtn.addEventListener("click", autoScan);
 
@@ -141,3 +137,5 @@ if (cmdinp) {
         }
     });
 }
+
+
