@@ -100,7 +100,7 @@ async function processCommand() {
         }
         printing = false;
         scanBtn.style.cursor = "pointer";
-        scanBtn.style.backgroundColor = "rgb(102, 179, 255)";
+        scanBtn.style.backgroundColor = "rgb(102, 179, 255)";\
     }
 }
 // Auto scan

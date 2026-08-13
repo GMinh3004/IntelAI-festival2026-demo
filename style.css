@@ -117,7 +117,7 @@ input {
     border-color: rgb(179, 255, 255);
 }
 #hint {
-    display: none;
+    display: block;
     margin: 10px 13px 3px;
     border: 2px solid rgb(0, 46, 77);
     color: white;
