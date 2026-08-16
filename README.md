@@ -1,0 +1,1 @@
+Đa số người mới khi chuyển sang Linux thường rất ngại khi gặp lỗi và làm việc với dòng lệnh, vì vậy KBHelper cung cấp khả năng rà soát lỗi và sửa lỗi 1 cách trực quan qua 1 nút bấm và cung cấp lệnh sửa lỗi để làm quen với dòng lệnh cli.
