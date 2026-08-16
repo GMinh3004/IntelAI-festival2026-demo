@@ -117,10 +117,47 @@ input {
     border-color: rgb(179, 255, 255);
 }
 #hint {
-    display: block;
+    display: none;
     margin: 10px 13px 3px;
+    padding: 2px 14px 8px;
     border: 2px solid rgb(0, 46, 77);
     color: white;
     background-color: rgb(0, 38, 77);
 }
-#kchat {}
+#cpcmd {
+    cursor: pointer;
+    border: 1px solid rgb(51, 204, 255);
+    border-radius: 5px;
+    background-color: rgb(0, 89, 179);
+    color: white;
+}
+#cpcmd:hover {
+    transform: scale(0.98);
+    transition: all 0.2s ease-in;
+}
+#cpcmd:active {
+    transition: all 150ms ease-in;
+    transform: rotate(1deg);
+}
+
+#kchat {
+    padding: 7px 10px 5px;
+    border-radius: 4px;
+    border: 1px solid rgb(153, 221, 255);
+    border-left: 4px solid rgb(102, 255, 102);
+}
+#helpcmd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+#kcmd {
+    border: 1px solid rgb(179, 255, 230);
+    padding: 7px 5px 5px;
+    font-family: monospace;
+    color: rgb(102, 255, 179);
+    margin: 0;
+    word-break: break-all;
+}
